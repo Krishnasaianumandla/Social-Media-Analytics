@@ -154,7 +154,12 @@ Returns: None
 '''
 def addSentimentColumn(data):
     classifier = SentimentIntensityAnalyzer()
-    return
+    sentiment=[]
+    for index,row in data.iterrows():
+        text=row['text']
+        sentiment.append(findSentiment(classifier,text))
+    data['sentiment']=sentiment
+    return None
 
 
 '''
@@ -317,7 +322,8 @@ if __name__ == "__main__":
     # test.testFindHashtags()
     # test.testGetRegionFromState()
     # test.testAddColumns()
-    test.testFindSentiment()
+    # test.testFindSentiment()
+    test.testAddSentimentColumn()
     # makeDataFrame("icecream.csv")
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
