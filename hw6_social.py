@@ -169,8 +169,17 @@ Parameters: dataframe ; str ; str
 Returns: dict mapping strs to ints
 '''
 def getDataCountByState(data, colName, dataToCount):
-    return
-
+    count={}
+    for index,row in data.iterrows():
+        if colName=="" and dataToCount=="" or row[colName]==dataToCount:
+            if row['state'] not in count:
+                 count[row['state']]=0
+            count[row['state']]+=1   
+    return count
+df = makeDataFrame("data/politicaldata.csv")
+stateDf = makeDataFrame("data/statemappings.csv")
+addColumns(df, stateDf)
+addSentimentColumn(df)
 
 '''
 getDataForRegion(data, colName)
@@ -323,7 +332,8 @@ if __name__ == "__main__":
     # test.testGetRegionFromState()
     # test.testAddColumns()
     # test.testFindSentiment()
-    test.testAddSentimentColumn()
+    # test.testAddSentimentColumn()
+    test.testGetDataCountByState(df)
     # makeDataFrame("icecream.csv")
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
