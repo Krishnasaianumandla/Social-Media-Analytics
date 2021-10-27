@@ -107,7 +107,25 @@ Parameters: dataframe ; dataframe
 Returns: None
 '''
 def addColumns(data, stateDf):
-    return
+    names=[]
+    positions=[]
+    states=[]
+    regions=[]
+    hashtags=[]
+    for index,row in data.iterrows():
+        fromString=row['label']
+        names.append(parseName(fromString))
+        positions.append(parsePosition(fromString))
+        states.append(parseState(fromString))
+        regions.append(getRegionFromState(stateDf,parseState(fromString)))
+        text=row['text']
+        hashtags.append(findHashtags(text))
+    data['name']=names
+    data['position']=positions
+    data['state']=states
+    data['region']=regions
+    data['hashtags']=hashtags
+    return None
 
 
 ### PART 2 ###
@@ -288,11 +306,12 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    # test.testParseName()
-    # test.testParsePosition()
-    # test.testParseState()
+    test.testParseName()
+    test.testParsePosition()
+    test.testParseState()
     test.testFindHashtags()
     test.testGetRegionFromState()
+    test.testAddColumns()
     # makeDataFrame("icecream.csv")
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
