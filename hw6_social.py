@@ -74,8 +74,19 @@ findHashtags(message)
 Parameters: str
 Returns: list of strs
 '''
-def findHashtags(message):
-    return
+def findHashtags(message):              
+    hashtags=[]
+    m = message.split("#")
+    for x in m[1:len(m)]: 
+        string=""
+        for y in x:
+            if y not in endChars:
+                string+=y
+            else:
+                break
+        string="#"+string
+        hashtags.append(string)
+    return hashtags
 
 
 '''
@@ -276,9 +287,10 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testParseName()
-    test.testParsePosition()
-    test.testParseState()
+    # test.testParseName()
+    # test.testParsePosition()
+    # test.testParseState()
+    test.testFindHashtags()
     # makeDataFrame("icecream.csv")
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
