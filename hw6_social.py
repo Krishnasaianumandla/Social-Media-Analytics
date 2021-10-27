@@ -25,7 +25,7 @@ Parameters: str
 Returns: dataframe
 '''
 def makeDataFrame(filename):
-   return
+   return pd.read_csv(filename)
 
 '''
 parseName(fromString)
