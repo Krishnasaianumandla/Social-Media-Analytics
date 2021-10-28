@@ -210,7 +210,8 @@ def getHashtagRates(data):
     d={}
     l=[]
     for index,row in data.iterrows():
-        l.append(row['hashtags'])
+        for i in row['hashtags']:
+            l.append(i)
     for i in l:
         if i not in d:
             d[i]=0
@@ -226,6 +227,7 @@ Returns: dict mapping strs to ints
 '''
 def mostCommonHashtags(hashtags, count):
     return
+
 
 
 '''
@@ -351,7 +353,9 @@ if __name__ == "__main__":
     # test.testFindSentiment()
     # test.testAddSentimentColumn()
     # test.testGetDataCountByState(df)
-    test.testGetDataForRegion(df)
+    # test.testGetDataForRegion(df)
+    test.testGetHashtagRates(df)
+    # test.testMostCommonHashtags(df)
     # makeDataFrame("icecream.csv")
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
