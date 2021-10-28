@@ -188,8 +188,17 @@ Parameters: dataframe ; str
 Returns: dict mapping strs to (dicts mapping strs to ints)
 '''
 def getDataForRegion(data, colName):
-    return
-
+    d={}
+    for index,row in data.iterrows():
+        outer=row['region']
+        inner=row[colName]
+        if outer not in d:
+            d[outer]={}                  
+        if inner not in d[outer]:               
+            d[outer][inner]=1
+        else:
+            d[outer][inner]+=1
+    return d
 
 '''
 getHashtagRates(data)
@@ -333,7 +342,8 @@ if __name__ == "__main__":
     # test.testAddColumns()
     # test.testFindSentiment()
     # test.testAddSentimentColumn()
-    test.testGetDataCountByState(df)
+    # test.testGetDataCountByState(df)
+    test.testGetDataForRegion(df)
     # makeDataFrame("icecream.csv")
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
