@@ -321,6 +321,7 @@ def sideBySideBarPlots(xLabels, labelList, valueLists, title):
 
     plt.show()
 
+
 """
 Expects two lists of probabilities and a list of labels (words) all the same length
 and plots the probabilities of x and y, labels each point, and puts a title on top.
