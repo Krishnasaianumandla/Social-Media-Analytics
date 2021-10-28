@@ -4,7 +4,6 @@ Name:
 Roll Number:
 """
 
-from typing import Counter
 import hw6_social_tests as test
 
 project = "Social" # don't edit this
@@ -298,6 +297,19 @@ Parameters: dict mapping strs to (dicts mapping strs to ints) ; str
 Returns: None
 '''
 def graphRegionComparison(regionDicts, title):
+    region=[]
+    feature=[]
+    feature_region=[]
+    for i in regionDicts:
+        region.append(i)
+        dummy=[]
+        x=regionDicts[i]
+        for j in x:
+            dummy.append(x[j])
+            if j not in feature:
+                feature.append(j)
+        feature_region.append(dummy)
+    sideBySideBarPlots(feature,region,feature_region,title)
     return
 
 
@@ -335,6 +347,7 @@ def sideBySideBarPlots(xLabels, labelList, valueLists, title):
     plt.title(title)
 
     plt.show()
+
 
 """
 Expects two lists of probabilities and a list of labels (words) all the same length
