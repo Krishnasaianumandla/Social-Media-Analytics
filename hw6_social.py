@@ -241,7 +241,16 @@ Parameters: dataframe ; str
 Returns: float
 '''
 def getHashtagSentiment(data, hashtag):
-    return
+    l=[]
+    for index,row in data.iterrows():
+        if hashtag in row['text']:
+            if row['sentiment']=='positive':
+                l.append(1)
+            elif row['sentiment']=='negative':
+                l.append(-1)
+            else:
+                l.append(0)
+    return sum(l)/len(l)
 
 
 ### PART 3 ###
@@ -359,7 +368,8 @@ if __name__ == "__main__":
     # test.testGetDataCountByState(df)
     # test.testGetDataForRegion(df)
     # test.testGetHashtagRates(df)
-    test.testMostCommonHashtags(df)
+    # test.testMostCommonHashtags(df)
+    test.testGetHashtagSentiment(df)
     # makeDataFrame("icecream.csv")
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
