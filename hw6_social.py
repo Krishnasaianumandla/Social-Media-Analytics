@@ -107,7 +107,25 @@ Parameters: dataframe ; dataframe
 Returns: None
 '''
 def addColumns(data, stateDf):
-    return
+    names=[]
+    positions=[]
+    states=[]
+    regions=[]
+    hashtags=[]
+    for index,row in data.iterrows():
+        fromString=row['label']
+        names.append(parseName(fromString))
+        positions.append(parsePosition(fromString))
+        states.append(parseState(fromString))
+        regions.append(getRegionFromState(stateDf,parseState(fromString)))
+        text=row['text']
+        hashtags.append(findHashtags(text))
+    data['name']=names
+    data['position']=positions
+    data['state']=states
+    data['region']=regions
+    data['hashtags']=hashtags
+    return None
 
 
 ### PART 2 ###
@@ -129,26 +147,9 @@ addSentimentColumn(data)
 Parameters: dataframe
 Returns: None
 '''
-def addColumns(data, stateDf):
-    names=[]
-    positions=[]
-    states=[]
-    regions=[]
-    hashtags=[]
-    for index,row in data.iterrows():
-        fromString=row['label']
-        names.append(parseName(fromString))
-        positions.append(parsePosition(fromString))
-        states.append(parseState(fromString))
-        regions.append(getRegionFromState(stateDf,parseState(fromString)))
-        text=row['text']
-        hashtags.append(findHashtags(text))
-    data['name']=names
-    data['position']=positions
-    data['state']=states
-    data['region']=regions
-    data['hashtags']=hashtags
-    return None
+def addSentimentColumn(data):
+    classifier = SentimentIntensityAnalyzer()
+    return
 
 
 '''
