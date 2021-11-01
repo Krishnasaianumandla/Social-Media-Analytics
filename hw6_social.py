@@ -169,7 +169,17 @@ Parameters: dataframe ; str ; str
 Returns: dict mapping strs to ints
 '''
 def getDataCountByState(data, colName, dataToCount):
-    return
+    count={}
+    for index,row in data.iterrows():
+        if colName=="" and dataToCount=="" or row[colName]==dataToCount:
+            if row['state'] not in count:
+                 count[row['state']]=0
+            count[row['state']]+=1   
+    return count
+df = makeDataFrame("data/politicaldata.csv")
+stateDf = makeDataFrame("data/statemappings.csv")
+addColumns(df, stateDf)
+addSentimentColumn(df)
 
 
 '''
