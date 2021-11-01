@@ -96,7 +96,8 @@ Parameters: dataframe ; str
 Returns: str
 '''
 def getRegionFromState(stateDf, state):
-    return
+    # print(stateDf.loc[stateDf['state'] == state,'region'].values[0])
+    return stateDf.loc[stateDf['state'] == state,'region'].values[0]
 
 
 '''
