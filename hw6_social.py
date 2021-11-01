@@ -141,9 +141,8 @@ def findSentiment(classifier, message):
     if score>0.1:
         return "positive"
     if score<-0.1:
-        return "negative"
-    else: 
-        return "neutral"
+        return "negative" 
+    return "neutral"
 
 
 '''
