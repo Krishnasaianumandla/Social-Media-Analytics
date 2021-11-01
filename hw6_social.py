@@ -63,7 +63,7 @@ Returns: str
 def parseState(fromString):
     start=fromString.find(" from ")+len(" from ")
     fromString=fromString[start:]
-    end=fromString.find(')")')
+    end=fromString.find(")")
     fromString=fromString[:end].strip()
     return fromString
 
