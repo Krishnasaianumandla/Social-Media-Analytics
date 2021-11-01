@@ -330,8 +330,7 @@ def graphHashtagSentimentByFrequency(data):
         hastagFreq.append(topCommonHashtags[tag])
         sentimentScores.append(getHashtagSentiment(data,tag))
     scatterPlot(hastagFreq,sentimentScores,hashtags,"Hastag Frequencies VS Sentiment Scores")
-    
-    return
+
 
 
 #### PART 3 PROVIDED CODE ####
